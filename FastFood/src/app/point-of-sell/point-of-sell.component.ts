@@ -24,16 +24,15 @@ export class PointOfSellComponent {
     descripcion: ''
   }
 
-  pedidoVacio : PedidoItem = {
-    numero: 0,
-    nombre: '',
-    descripcion: ''
-  } 
   
   enviarNuevoPedido() {
     this.pedidosService.agregarNuevoPedido(this.nuevoPedido);
     // this.pedidoEmmiter.emit(this.nuevoPedido)
-    this.nuevoPedido = this.pedidoVacio;
+    this.nuevoPedido = {
+      numero: 0,
+      nombre: '',
+      descripcion: ''
+    } 
   }
 
   ngOnInit() {
