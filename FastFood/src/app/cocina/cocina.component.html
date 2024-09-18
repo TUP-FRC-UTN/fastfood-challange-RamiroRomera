@@ -1,22 +1,22 @@
-<div>
+<div class="container">
     @if (pedidosCocinar.length > 0) {
-        <h1>Pedidos a Cocinar</h1>
+        <h1 class="text-body-secondary">Pedidos a Cocinar</h1>
 
         @for (pedido of pedidosCocinar; track pedido) {
-            <ul>
-                <li>{{pedido.numero}} - {{pedido.descripcion}} <button (click)="empezarCoccion(pedido)">Cocinar</button></li>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{pedido.numero}} - {{pedido.descripcion}} <button class="btn btn-warning" (click)="empezarCoccion(pedido)">Cocinar</button></li>
             </ul>
         }
     }
 </div>
-<div>
+<div class="container">
     @if (pedidosCoccion.length > 0) {
-        <h1>Pendiente en Coccion</h1>
+        <h1 class="text-body-secondary">Pendiente en Coccion</h1>
         @for (pedido of pedidosCoccion; track pedido) {
-            <ul>
-                <li>{{pedido.numero}} - {{pedido.descripcion}}</li>
+            <ul class="list-group">
+                <li class="list-group-item">{{pedido.numero}} - {{pedido.descripcion}}</li>
             </ul>
         }
-        <button (click)="terminarCoccion()" >Pedido Terminado</button>
+        <button (click)="terminarCoccion()" class="btn btn-success">Pedido Terminado</button>
     }
 </div>

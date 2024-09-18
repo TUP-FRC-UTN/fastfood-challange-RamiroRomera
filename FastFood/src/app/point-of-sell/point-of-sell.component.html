@@ -1,27 +1,33 @@
-<div>
+<div class="container">
     @if (pedidosEntregar.length > 0) {
-        <h1>Pedidos Terminados</h1>
+        <h1 class="text-body-secondary">Pedidos Terminados</h1>
         @for (pedido of pedidosEntregar; track pedido) {
-            <ul>
-                <li>{{pedido.numero}} - {{pedido.descripcion}} <button (click)="pedidoEntregado(pedido)">Entregar</button></li>
+            <ul class="list-group">
+                <li class="list-group-item">{{pedido.numero}} - {{pedido.descripcion}} <button (click)="pedidoEntregado(pedido)" class="btn btn-danger">Entregar</button></li>
             </ul>
         }
     }
 </div>
 
-<div>
+<div class="container">
     <form #form="ngForm" (ngSubmit)="enviarNuevoPedido()" >
+        <h1 class="text-body-secondary">Nuevo Pedido</h1>
+
         <div>
-            <label>Nombre</label>
-            <input #name="ngModel" type="text" [(ngModel)]="nuevoPedido.nombre" name="nombre" required>
+            <label class="col-sm-2 col-form-label">Nombre</label>
+            <input #name="ngModel" type="text" [(ngModel)]="nuevoPedido.nombre" name="nombre" required class="form-control">
         </div>
     
         <div>
-            <label>Descripcion</label>
-            <input #descripcion="ngModel" type="text" [(ngModel)]="nuevoPedido.descripcion" name="descripcion" required>
+            <label class="col-sm-2 col-form-label">Descripcion</label>
+            <input #descripcion="ngModel" type="text" [(ngModel)]="nuevoPedido.descripcion" name="descripcion" required class="form-control">
         </div>
-    
-        <button>Ordenar</button>
+        
+        <div class="m-4"></div>
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary">Ordenar</button>
+        </div>
     </form>    
 </div>
 

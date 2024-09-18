@@ -33,7 +33,6 @@ export class PointOfSellComponent {
   enviarNuevoPedido() {
     this.pedidosService.agregarNuevoPedido(this.nuevoPedido);
     // this.pedidoEmmiter.emit(this.nuevoPedido)
-
     this.nuevoPedido = this.pedidoVacio;
   }
 
