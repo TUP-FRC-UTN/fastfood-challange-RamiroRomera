@@ -15,18 +15,38 @@
 
         <div>
             <label class="col-sm-2 col-form-label">Nombre</label>
-            <input #name="ngModel" type="text" [(ngModel)]="nuevoPedido.nombre" name="nombre" required class="form-control">
+            <input #nombre="ngModel" type="text" [(ngModel)]="nuevoPedido.nombre" name="nombre" required class="form-control" minlength="4">
+            @if (nombre.invalid && nombre.touched) {
+                <div>
+                    @if (nombre.getError('required')) {
+                        <p>Nombre necesario</p>
+                    }
+                    @else if (nombre.getError('minlength')) {
+                        <p>El nombre minimo tiene 4 letras</p>
+                    }
+                </div>
+            }
         </div>
     
         <div>
             <label class="col-sm-2 col-form-label">Descripcion</label>
-            <input #descripcion="ngModel" type="text" [(ngModel)]="nuevoPedido.descripcion" name="descripcion" required class="form-control">
+            <input #descripcion="ngModel" type="text" [(ngModel)]="nuevoPedido.descripcion" name="descripcion" required class="form-control" minlength="20">
+            @if (descripcion.invalid && descripcion.touched) {
+                <div>
+                    @if (descripcion.getError('required')) {
+                        <p>Descripcion necesario</p>
+                    }
+                    @else if (descripcion.getError('minlength')) {
+                        <p>La descripcion minimo tiene 20 letras</p>
+                    }
+                </div>
+            }
         </div>
         
         <div class="m-4"></div>
 
         <div class="d-grid gap-2">
-            <button class="btn btn-primary">Ordenar</button>
+            <button class="btn btn-primary" [disabled]="!form.valid">Ordenar</button>
         </div>
     </form>    
 </div>
